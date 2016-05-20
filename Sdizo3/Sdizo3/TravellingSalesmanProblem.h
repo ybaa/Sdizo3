@@ -2,7 +2,9 @@
 class TravellingSalesmanProblem {
 
 	vector <vector <int> > distance;
-	vector <vector <int> > row;
+	vector <int>  row;
+
+	vector <int> listOfVisitedTowns;
 
 	int numberOfTowns;
 
@@ -11,5 +13,9 @@ public:
 	~TravellingSalesmanProblem();
 
 	void generateFile();
+	void readFromFIle();
+	void showContent();
+	int greedy();
+	void showVisitedTowns();
 };
 

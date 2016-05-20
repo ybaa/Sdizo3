@@ -19,8 +19,12 @@ int main()
 
 
 	TravellingSalesmanProblem salesman;
-	salesman.generateFile();
-
+	//salesman.generateFile();
+	salesman.readFromFIle();
+	salesman.showContent();
+	int koszt = salesman.greedy();
+	cout << endl << koszt << endl << endl;
+	salesman.showVisitedTowns();
 	system("PAUSE");
     return 0;
 }
