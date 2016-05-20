@@ -18,7 +18,9 @@
 #include <fstream>
 #include <ctime>
 #include <vector>
+#include <string>
 
 #include "KnapsackProblem.h"
+#include "TravellingSalesmanProblem.h"
 
 using namespace std;
