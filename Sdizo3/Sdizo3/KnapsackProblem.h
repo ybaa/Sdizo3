@@ -7,14 +7,13 @@ class KnapsackProblem {
 
 	vector < vector <int> > items;
 	vector < int > row;
-	vector < vector <int> > sortedItems;
 
 public:
 	KnapsackProblem();
 	~KnapsackProblem();
 
 	void generateFile();
-	void readDataFromFile();
+	void readDataFromFile(string);
 	void solveDynamic();
 	void bruteforce();
 	void showContent();

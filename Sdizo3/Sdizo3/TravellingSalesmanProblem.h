@@ -13,7 +13,7 @@ public:
 	~TravellingSalesmanProblem();
 
 	void generateFile();
-	void readFromFIle();
+	void readFromFIle(string);
 	void showContent();
 	int greedy();
 	void showVisitedTowns();

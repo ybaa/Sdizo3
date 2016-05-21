@@ -9,6 +9,7 @@ KnapsackProblem::KnapsackProblem() {
 
 
 KnapsackProblem::~KnapsackProblem() {
+	items.clear();
 }
 
 void KnapsackProblem::generateFile(){
@@ -43,9 +44,9 @@ void KnapsackProblem::generateFile(){
 }
 
 
-void KnapsackProblem::readDataFromFile() {
+void KnapsackProblem::readDataFromFile(string data) {
 	
-	fstream file("file.txt", ios::in);
+	fstream file(data, ios::in);
 	int help, help2;
 
 	if (file.is_open()) {

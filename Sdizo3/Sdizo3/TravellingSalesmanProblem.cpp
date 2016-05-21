@@ -7,12 +7,14 @@ TravellingSalesmanProblem::TravellingSalesmanProblem() {
 
 
 TravellingSalesmanProblem::~TravellingSalesmanProblem() {
+	distance.clear();
+	listOfVisitedTowns.clear();
 }
 
 void TravellingSalesmanProblem::generateFile() {
 	srand(time(NULL));
 
-	numberOfTowns = rand() % 100 + 1;
+	numberOfTowns = rand() % 10 + 1;
 	
 	vector <int> help;
 	vector <vector < int> > vec;
@@ -49,8 +51,8 @@ void TravellingSalesmanProblem::generateFile() {
 	vec.clear();
 }
 
-void TravellingSalesmanProblem::readFromFIle() {
-	fstream file("file2.txt", ios::in);
+void TravellingSalesmanProblem::readFromFIle(string data) {
+	fstream file(data, ios::in);
 	int help, help2;
 
 	if (file.is_open()) {
@@ -86,7 +88,7 @@ void TravellingSalesmanProblem::showContent() {
 
 int TravellingSalesmanProblem::greedy() {
 	
-	int cost = 100000;
+	int cost = 0;
 	int theLeastCost = 0;
 	int currentTown;
 	int help;
@@ -98,6 +100,8 @@ int TravellingSalesmanProblem::greedy() {
 	}
 
 	for (int i = 0; i < numberOfTowns ; i++) {
+		theLeastCost += cost;
+		cost = 2147483647;
 		currentTown = nextTown;
 		visited[currentTown] = true;
 		listOfVisitedTowns.push_back(currentTown);
@@ -112,15 +116,10 @@ int TravellingSalesmanProblem::greedy() {
 				}
 			}
 		}
-
-		theLeastCost += cost;
-		cost = 100000;
 	}
-
-	theLeastCost += distance[nextTown][0];
-	return theLeastCost;
-
+	
 	delete[] visited;
+	return theLeastCost;
 }
 
 void TravellingSalesmanProblem::showVisitedTowns() {
