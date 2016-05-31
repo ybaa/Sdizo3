@@ -15,7 +15,6 @@ public:
 	void generateFile();
 	void readDataFromFile(string);
 	void solveDynamic();
-	void bruteforce();
 	void showContent();
 	void sort();
 	

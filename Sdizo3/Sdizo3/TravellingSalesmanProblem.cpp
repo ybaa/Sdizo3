@@ -14,7 +14,9 @@ TravellingSalesmanProblem::~TravellingSalesmanProblem() {
 void TravellingSalesmanProblem::generateFile() {
 	srand(time(NULL));
 
-	numberOfTowns = rand() % 10 + 1;
+	//numberOfTowns = rand() % 10 + 1;
+	cout << "podaj liczbe miast: ";
+	cin >> numberOfTowns;
 	
 	vector <int> help;
 	vector <vector < int> > vec;
@@ -124,7 +126,8 @@ int TravellingSalesmanProblem::greedy() {
 
 void TravellingSalesmanProblem::showVisitedTowns() {
 	for (int i = 0; i < listOfVisitedTowns.size(); i++) {
-		cout << listOfVisitedTowns[i] << endl;
+		cout << listOfVisitedTowns[i] << "  ";
 	}
+	cout << endl;
 }
 

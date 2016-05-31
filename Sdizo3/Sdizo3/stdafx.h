@@ -19,6 +19,7 @@
 #include <ctime>
 #include <vector>
 #include <string>
+#include <iomanip>
 
 #include "KnapsackProblem.h"
 #include "TravellingSalesmanProblem.h"

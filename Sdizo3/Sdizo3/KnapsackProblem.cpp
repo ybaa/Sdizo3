@@ -15,8 +15,12 @@ KnapsackProblem::~KnapsackProblem() {
 void KnapsackProblem::generateFile(){
 	srand(time(NULL));
 	
-	capacity = rand() % 10 + 10;// 50 + 50;
-	numberOfItems = rand() % 6 + 4;
+	//capacity = rand() % 20 + 10;
+	//numberOfItems = rand() % 20 + 6;
+	cout << "Podaj pojemnosc plecaka: ";
+	cin >> capacity;
+	cout << endl << "Podaj ilosc przedmiotow: ";
+	cin >> numberOfItems;
 
 	int size, value;
 
@@ -26,8 +30,8 @@ void KnapsackProblem::generateFile(){
 	vec.push_back(numberOfItems);
 
 	for (int i = 0; i < numberOfItems; i++) {
-		size = rand() % 16 + 1;
-		value = rand() % 16 + 1;
+		size = rand() % 6 + 1;
+		value = rand() % 6 + 1;
 		vec.push_back(size);
 		vec.push_back(value);
 	}
@@ -77,9 +81,6 @@ void KnapsackProblem::readDataFromFile(string data) {
 }
 
 
-void KnapsackProblem::bruteforce() {
-
-}
 
 void KnapsackProblem::solveDynamic() {
 
@@ -89,12 +90,6 @@ void KnapsackProblem::solveDynamic() {
 		result.push_back(vector<int>(capacity + 1, 0));
 		}
 
-	for (int i = 0; i < result.size(); i++) {
-		for (int j = 0; j < capacity + 1; j++) {
-			cout << result[i][j] << " ";
-		}
-		cout << endl;
-	}
 
 	for (int i = 1; i < numberOfItems+1; i++) {
 		
@@ -115,67 +110,34 @@ void KnapsackProblem::solveDynamic() {
 
 	for (int i = 0; i < result.size(); i++) {
 		for (int j = 0; j < capacity + 1; j++) {
-			cout << result[i][j] << " ";
+			cout<<setw(2) << result[i][j] << " ";
 		}
 		cout << endl;
 	}
 
+	// sprawdzenie ktore rzeczy zostaly wybrane
 	
 	vector < vector<int> > whichItems;
-	//row.clear();
+	
 
-
-	int y = capacity;
-	int x = numberOfItems;
-	int help;
-	int localCapacity = capacity;
-	while (true) {
-		if (x >= 1) {
-			if (result[x][y] != result[x - 1][y]) {
-				help = items[x - 1][0];
-				row.push_back(items[x - 1][0]);
-				row.push_back(items[x - 1][1]);
-				whichItems.push_back(row);
-				row.pop_back();
-				row.pop_back();
-
-
-				if (x == numberOfItems && y == capacity)
-					break;
-
-				x--;
-
-				if (x == 0 && y == 0)
-					break;
-
-			}
-			else {
-				x--;
-				while (result[x][y] == result[x - 1][y])
-					x--;
-
-				x--;
-				help = items[x - 1][0];
-				y -= help;
-
-				row.push_back(items[x][0]);
-				row.push_back(items[x][1]);
-				whichItems.push_back(row);
-				row.pop_back();
-				row.pop_back();
-
-
-			}
-
-
-
+	int w = capacity;
+	int i = numberOfItems;
+	while (w>0 && i>0) {
+		if (result[i][w] != result[i - 1][w]) {
+			row.clear();
+			row.push_back(items[i - 1][0]);
+			row.push_back(items[i - 1][1]);
+			whichItems.push_back(row);
+			w -= items[i - 1][0];
+			i--;
 		}
 		else
-			break;
+			i--;
 	}
 
+	// wypisanie wybranych przedmitow
 	cout << endl;
-	cout << "waga bydla to " << result[numberOfItems][capacity]<<endl;
+	cout << "wartosc " << result[numberOfItems][capacity]<<endl;
 	for (int i = 0; i < whichItems.size(); i++) {
 		cout << whichItems[i][0] << " ";
 		cout << whichItems[i][1];
