@@ -106,14 +106,16 @@ void KnapsackProblem::solveDynamic() {
 			}
 		}
 	}
-	cout << "----------------------------------\n";
+	cout << endl;
 
+	//wyswietlanie macierzy po ktorej skacze algorytm 
+/*
 	for (int i = 0; i < result.size(); i++) {
 		for (int j = 0; j < capacity + 1; j++) {
 			cout<<setw(2) << result[i][j] << " ";
 		}
 		cout << endl;
-	}
+	}*/
 
 	// sprawdzenie ktore rzeczy zostaly wybrane
 	

@@ -20,6 +20,7 @@
 #include <vector>
 #include <string>
 #include <iomanip>
+#include <Windows.h>
 
 #include "KnapsackProblem.h"
 #include "TravellingSalesmanProblem.h"

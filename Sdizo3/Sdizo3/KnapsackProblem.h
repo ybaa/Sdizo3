@@ -15,6 +15,7 @@ public:
 	void generateFile();
 	void readDataFromFile(string);
 	void solveDynamic();
+	void showMatrix();
 	void showContent();
 	void sort();
 	
